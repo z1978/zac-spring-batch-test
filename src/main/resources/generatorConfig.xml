@@ -3,10 +3,11 @@
 <generatorConfiguration>
 	<!-- 数据库驱动包位置 -->
 	
+	<classPathEntry	location="C:\Users\ts-ningbo.zhang\.m2\repository\mysql\mysql-connector-java\5.1.30\mysql-connector-java-5.1.30.jar" />
 	<!--
 	<classPathEntry	location="C:\Users\zhangningbo\.m2\repository\mysql\mysql-connector-java\5.1.30\mysql-connector-java-5.1.30.jar" />
-	-->
 	<classPathEntry	location="/Users/zhangningbo/.m2/repository/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.jar" />
+	-->
 	<context id="context1">
 		<commentGenerator>
 			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->

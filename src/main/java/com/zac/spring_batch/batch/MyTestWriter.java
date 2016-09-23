@@ -9,9 +9,6 @@ import org.springframework.stereotype.Component;
 
 import com.zac.spring_batch.entity.people;
 
-import lombok.Getter;
-import lombok.Setter;
-
 
 /**
  * 
@@ -20,8 +17,7 @@ import lombok.Setter;
  * @since 2.0.0
  */
 
-@Getter
-@Setter
+
 @Component
 public class MyTestWriter implements ItemWriter<people> {
     private static final Logger logger = LoggerFactory.getLogger(MyTestWriter.class);

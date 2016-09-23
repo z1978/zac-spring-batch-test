@@ -1,10 +1,9 @@
 package com.zac.spring_batch.batch;
 
-import javax.sql.DataSource;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
@@ -16,21 +15,14 @@ import org.springframework.context.annotation.Configuration;
 import com.zac.spring_batch.entity.people;
 
 @Configuration
-@EnableBatchProcessing
 public class MyTestConfig {
+	private static final Logger log = LoggerFactory.getLogger(MyTestConfig.class);
 	private @Autowired @Qualifier("myTestStep") Step myTestStep;
-	@Autowired
-	public JobBuilderFactory jobBuilderFactory;
 
-	@Autowired
-	public StepBuilderFactory stepBuilderFactory;
-
-	@Autowired
-	public DataSource dataSource;
 
 	@Bean
-	public Job importUserJob() {
-		return jobBuilderFactory.get("myTestJob")
+	public Job myTestJob(JobBuilderFactory jobs) {
+		return jobs.get("myTestJob")
 				.incrementer(new RunIdIncrementer())
 				.flow(myTestStep).end().build();
 	}

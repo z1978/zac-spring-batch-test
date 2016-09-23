@@ -2,11 +2,10 @@
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
 	<!-- 数据库驱动包位置 -->
+	<classPathEntry	location="/Users/zhangningbo/.m2/repository/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.jar" />
 	
-	<classPathEntry	location="C:\Users\ts-ningbo.zhang\.m2\repository\mysql\mysql-connector-java\5.1.30\mysql-connector-java-5.1.30.jar" />
 	<!--
 	<classPathEntry	location="C:\Users\zhangningbo\.m2\repository\mysql\mysql-connector-java\5.1.30\mysql-connector-java-5.1.30.jar" />
-	<classPathEntry	location="/Users/zhangningbo/.m2/repository/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.jar" />
 	-->
 	<context id="context1">
 		<commentGenerator>

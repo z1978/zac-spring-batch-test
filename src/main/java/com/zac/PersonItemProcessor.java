@@ -3,16 +3,18 @@ package com.zac;
 
 import org.springframework.batch.item.ItemProcessor;
 
-public class PersonItemProcessor implements ItemProcessor<Person, Person> {
+import com.zac.spring_batch.entity.People;
+
+public class PersonItemProcessor implements ItemProcessor<People, People> {
 
     @Override
-    public Person process(final Person person) throws Exception {
-        final String firstName = person.getFirstName();
-        final String lastName  = person.getLastName();
+    public People process(final People people) throws Exception {
+        final String firstName = people.getFirst_name();
+        final String lastName  = people.getLast_name();
 
-        final Person transformedPerson = new Person(firstName, lastName);
+//        final people transformedPerson = new people(firstName, lastName);
 
-        return transformedPerson;
+        return people;
     }
 
 }

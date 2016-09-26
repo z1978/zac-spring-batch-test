@@ -20,6 +20,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
+import com.zac.spring_batch.entity.People;
+
 import javax.sql.DataSource;
 
 
@@ -37,16 +39,16 @@ public class BatchConfiguration {
     public DataSource dataSource;
 
     @Bean
-    public FlatFileItemReader<Person> reader() {
-        FlatFileItemReader<Person> reader = new FlatFileItemReader<Person>();
+    public FlatFileItemReader<People> reader() {
+        FlatFileItemReader<People> reader = new FlatFileItemReader<People>();
         reader.setResource(new ClassPathResource("sample-data.csv"));
 
-        reader.setLineMapper(new DefaultLineMapper<Person>() {{
+        reader.setLineMapper(new DefaultLineMapper<People>() {{
             setLineTokenizer(new DelimitedLineTokenizer(){{
-                setNames(new String[] { "firstName", "lastName" });
+                setNames(new String[] { "first_name", "last_name" });
             }});
-            setFieldSetMapper(new BeanWrapperFieldSetMapper<Person>() {{
-                    setTargetType(Person.class);
+            setFieldSetMapper(new BeanWrapperFieldSetMapper<People>() {{
+                    setTargetType(People.class);
             }});
         }});
 
@@ -68,10 +70,10 @@ public class BatchConfiguration {
     }
 
     @Bean
-    public JdbcBatchItemWriter<Person> writer() {
-        JdbcBatchItemWriter<Person> writer = new JdbcBatchItemWriter<Person>();
-        writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<Person>());
-        writer.setSql("INSERT INTO people (first_name, last_name) VALUES (:firstName, :lastName)");
+    public JdbcBatchItemWriter<People> writer() {
+        JdbcBatchItemWriter<People> writer = new JdbcBatchItemWriter<People>();
+        writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<People>());
+        writer.setSql("INSERT INTO people (first_name, last_name) VALUES (:first_name, :last_name)");
         writer.setDataSource(dataSource);
         return writer;
     }
@@ -100,7 +102,7 @@ public class BatchConfiguration {
     @Bean
     public Step step1() {
         return stepBuilderFactory.get("step1")
-                .<Person, Person> chunk(10)
+                .<People, People> chunk(10)
                 .reader(reader())
                 .processor(processor())
                 .writer(writer())

@@ -1,11 +1,11 @@
 package com.zac.spring_batch.dao;
 
-import com.zac.spring_batch.entity.people;
+import com.zac.spring_batch.entity.People;
 import org.apache.ibatis.jdbc.SQL;
 
 public class peopleSqlProvider {
 
-    public String insertSelective(people record) {
+    public String insertSelective(People record) {
         SQL sql = new SQL();
         sql.INSERT_INTO("people");
         
@@ -24,7 +24,7 @@ public class peopleSqlProvider {
         return sql.toString();
     }
 
-    public String updateByPrimaryKeySelective(people record) {
+    public String updateByPrimaryKeySelective(People record) {
         SQL sql = new SQL();
         sql.UPDATE("people");
         

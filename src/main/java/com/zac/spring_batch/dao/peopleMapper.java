@@ -1,6 +1,6 @@
 package com.zac.spring_batch.dao;
 
-import com.zac.spring_batch.entity.people;
+import com.zac.spring_batch.entity.People;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.InsertProvider;
@@ -24,10 +24,10 @@ public interface peopleMapper {
         "values (#{personId,jdbcType=INTEGER}, #{first_name,jdbcType=VARCHAR}, ",
         "#{last_name,jdbcType=VARCHAR})"
     })
-    int insert(people record);
+    int insert(People record);
 
     @InsertProvider(type=peopleSqlProvider.class, method="insertSelective")
-    int insertSelective(people record);
+    int insertSelective(People record);
 
     @Select({
         "select",
@@ -40,10 +40,10 @@ public interface peopleMapper {
         @Result(column="first_name", property="first_name", jdbcType=JdbcType.VARCHAR),
         @Result(column="last_name", property="last_name", jdbcType=JdbcType.VARCHAR)
     })
-    people selectByPrimaryKey(Integer personId);
+    People selectByPrimaryKey(Integer personId);
 
     @UpdateProvider(type=peopleSqlProvider.class, method="updateByPrimaryKeySelective")
-    int updateByPrimaryKeySelective(people record);
+    int updateByPrimaryKeySelective(People record);
 
     @Update({
         "update people",
@@ -51,5 +51,5 @@ public interface peopleMapper {
           "last_name = #{last_name,jdbcType=VARCHAR}",
         "where person_id = #{personId,jdbcType=INTEGER}"
     })
-    int updateByPrimaryKey(people record);
+    int updateByPrimaryKey(People record);
 }

@@ -1,6 +1,6 @@
 package com.zac.spring_batch.entity;
 
-public class people {
+public class People {
     private Integer personId;
 
     private String first_name;
